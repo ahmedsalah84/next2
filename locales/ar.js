@@ -1,5 +1,5 @@
 export default {
-    spark: 'موقع سبارك',
+    spark: 'موقع سبارك سيستمز',
     home:'الرئيسية',
     services:'الخدمات',
     news:'الاخبار',

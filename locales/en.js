@@ -1,5 +1,5 @@
 export default {
-    spark: 'Spark Website',
+    spark: 'Spark Systems Website',
     home:'Home',
     services:'Services',
     news:'News',
