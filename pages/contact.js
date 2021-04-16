@@ -1,9 +1,10 @@
+
 import { useRouter } from "next/router";
 import ar from "../locales/ar";
 import en from "../locales/en";
 import s from "../components/s";
 
-export default function Home({ items }) {
+export default function contact({ items }) {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "en" ? en : ar;
@@ -13,23 +14,23 @@ export default function Home({ items }) {
       <div className="row">
         <div className="col-lg-6 d-flex align-items-center">
           <div className="content">
-            <h1 className="mb-3">{t.weare}</h1>
+            {/* <h1 className="mb-3">{t.weare}</h1> */}
             <div dangerouslySetInnerHTML={{ __html: items.content }} />
           </div>
         </div>
-        <div className="col-lg-6">
+        {/* <div className="col-lg-6">
           <img src={`${s.url + items.picture}?h=500`} alt="" />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${s.url}/${context.locale}/api/v1/HomePage`);
+  const res = await fetch(`${s.url}/${context.locale}/api/v1/ContactUs`);
   const data = await res.json();
 
   return {
-    props: { items: data.data.weAreCreative },
+    props: { items: data.data },
   };
 }

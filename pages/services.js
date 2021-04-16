@@ -3,23 +3,21 @@ import ar from "../locales/ar";
 import en from "../locales/en";
 import s from "../components/s";
 
-export default function Home({ items }) {
+export default function Serivces({ items }) {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "en" ? en : ar;
 
   return (
     <div className="container pt-5">
-      <div className="row">
-        <div className="col-lg-6 d-flex align-items-center">
-          <div className="content">
-            <h1 className="mb-3">{t.weare}</h1>
-            <div dangerouslySetInnerHTML={{ __html: items.content }} />
+      <div className="row justify-content-center">
+        {items.map((i) => (
+          <div key={i.id} className="col-lg-4 text-center mb-5">
+            <img src={`${s.url + i.icon}`} alt="" height='50' className='mb-4' />
+            <h4>{i.name}</h4>
+            <div dangerouslySetInnerHTML={{ __html: i.description }} />
           </div>
-        </div>
-        <div className="col-lg-6">
-          <img src={`${s.url + items.picture}?h=500`} alt="" />
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -30,6 +28,6 @@ export async function getServerSideProps(context) {
   const data = await res.json();
 
   return {
-    props: { items: data.data.weAreCreative },
+    props: { items: data.data.serviceCategory },
   };
 }
