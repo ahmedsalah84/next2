@@ -13,7 +13,7 @@ export default function Home({ items }) {
       <div className="row">
         <div className="col-lg-6 d-flex align-items-center">
           <div className="content">
-            <h1 className="mb-3">{t.weare}</h1>
+            <h1 className="mb-3">{items.name}</h1>
             <div dangerouslySetInnerHTML={{ __html: items.content }} />
           </div>
         </div>
@@ -24,12 +24,12 @@ export default function Home({ items }) {
     </div>
   );
 }
+export async function getStaticProps(context) {
 
-export async function getServerSideProps(context) {
-  const res = await fetch(`${s.url}/${context.locale}/api/v1/HomePage`);
+  const res = await fetch(`${s.url}/${context.locale}/api/v2/HomePage`);
   const data = await res.json();
 
   return {
-    props: { items: data.data.weAreCreative },
+    props: { items: data.about },
   };
 }
