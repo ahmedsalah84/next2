@@ -12,7 +12,7 @@ export default function Newsdetails({ items }) {
   return (
     <div className="container pt-5">
       <div className="row">
-      <img src={`${s.url + items.picture}?h=500`} alt=""  className='m-auto img-fliud'/>
+      <img src={`${s.url + items.picture}?h=500`} alt=""  className='m-auto img-fluid'/>
       <div dangerouslySetInnerHTML={{ __html: items.content }} />
 
       </div>
