@@ -17,6 +17,7 @@ export default function Home({ items }) {
             <div dangerouslySetInnerHTML={{ __html: items.content }} />
           </div>
         </div>
+
         
         <div className="col-lg-6">
           <img src={`${s.url + items.picture}?h=500`} className="img-fluid"  alt="" />
