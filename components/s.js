@@ -1,3 +1,3 @@
 export default {
-    url: 'https://demo-api.sparkdemos.com',
+    url: 'https://www.spark-sys.com',
 }
