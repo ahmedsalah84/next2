@@ -16,9 +16,9 @@ export default function News({ items }) {
        <Link href={`/news/${i.id}`}>
         <div key={i.id} className="col-lg-6 mb-5">
             <img
-              src={`${s.url + i.picture}?w=600`}
+              src={`${s.url + i.picture}?w=500&h=300&mode=crop&scale=both`}
               alt=""
-              className="img-fluid"
+              className="img-fluid border w-100"
             />
             <div className="div pt-3">
               <h3>{i.name}</h3>
@@ -32,11 +32,11 @@ export default function News({ items }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const res = await fetch(`${s.url}/${context.locale}/api/v1/CaseStudies`);
+export async function getStaticProps(context) {
+  const res = await fetch(`${s.url}/${context.locale}/api/v2/News`);
   const data = await res.json();
 
   return {
-    props: { items: data.data },
+    props: { items: data },
   };
 }

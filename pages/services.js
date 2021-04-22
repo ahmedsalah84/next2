@@ -13,7 +13,7 @@ export default function Serivces({ items }) {
       <div className="row justify-content-center">
         {items.map((i) => (
           <div key={i.id} className="col-lg-4 text-center mb-5">
-            <img src={`${s.url + i.icon}`} alt="" height='50' className='mb-4' />
+            <img src={`${s.url + i.picture}?h=200`} alt=""  className='mb-4 img-fluid' />
             <h4>{i.name}</h4>
             <div dangerouslySetInnerHTML={{ __html: i.description }} />
           </div>
@@ -24,11 +24,11 @@ export default function Serivces({ items }) {
   
 }
 
-export async function getServerSideProps(context) {
-  const res = await fetch(`${s.url}/${context.locale}/api/v1/HomePage`);
+export async function getStaticProps(context) {
+  const res = await fetch(`${s.url}/${context.locale}/api/v2/Services`);
   const data = await res.json();
 
   return {
-    props: { items: data.data.serviceCategory },
+    props: { items: data },
   };
 }
