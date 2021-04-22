@@ -21,6 +21,7 @@ export default function Serivces({ items }) {
       </div>
     </div>
   );
+  
 }
 
 export async function getServerSideProps(context) {
